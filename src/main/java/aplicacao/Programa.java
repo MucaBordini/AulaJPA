@@ -9,19 +9,19 @@ import dominio.Pessoa;
 public class Programa {
 
 	public static void main(String[] args) {
-		
-		Pessoa p1 = new Pessoa(null, "Carlos da Silva", "carlos@mail.com");
-		Pessoa p2 = new Pessoa(null, "Joao Pedro", "joao@mail.com");
-		Pessoa p3 = new Pessoa(null, "Maria Rita", "marias@mail.com");
-		
+	
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("exemplo-jpa");
 		EntityManager em = emf.createEntityManager();
 		
-		em.persist(p1);
-		em.persist(p2);
-		em.persist(p3);
+		Pessoa p = em.find(Pessoa.class, 2);
+		
+		System.out.println(p);
+		
+		System.out.println("Pronto");
 
+		em.close();
+		emf.close();
 	}
 
 }
